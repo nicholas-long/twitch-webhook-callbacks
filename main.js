@@ -1,7 +1,6 @@
 // register a webhook for any event type: use custom URL for each type of webhook event, for example channel.subscribe
 // this callback needs to be wrapped in HTTPs for twitch to call it. use something like caddy to do this easily.
 
-require('dotenv').config(); // initialize .env file
 const twitchwebhooksecret = ""; // TODO: define a secret to pass to twitch when registering webhooks, and include it here to support validating the webhook messages.
 
 // Notification request headers
@@ -89,6 +88,7 @@ app.post('/webhook/twitch/:eventtype', async (req, res) => {
         // at this point we have a valid twitch event to push and not a handshake or webhook registration setup or revocation event
         //
         // TODO: add your code to handle, log, and store the event here
+        console.log(JSON.stringify(req.body.event); // print event to console as default demonstration behavior
         //
       }
     } else {
